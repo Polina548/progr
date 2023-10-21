@@ -1,27 +1,30 @@
 <html>
 <head>
-<script>
-function result(){
-	var sum = 0;
-	var N = Number(document.forms["frm"].elements["N"].value);
-	var x = Number(document.forms["frm"].elements["x"].value);
-	if(x>1){
-		for(var n = 0; n <= N; n++){
-			sum = sum + ((-1)**(n+1)/(2*n+1)*x**(2*n+1));
+    <script>
+        function result(){
+        var n = document.forms["frm"].elements["p"].value;
+        var a = n.split(' '); 
+		var arr=[];
+		for (var i = 0; i < a.length; i++) {
+    var num = parseFloat(a[i]);
+    if (isNaN(num)) {
+        document.writeln("Пожалуйста, введите действительное число.");
+        break;
+    }
+    if (num === 0) {
+        break;
+    }
+    arr.push(num);
+}
+var count = arr.length;
+document.writeln(`Количество членов последовательности: ${count}`);
 		}
-		document.write(sum);
-	} else{
-		document.write("Неверное значение: ")
-	} }
-</script>
-</head>
-<body>
-	<form id="frm">
-	<label>Введите первое число</label><br>
-	<input type = "text" id = "N"><br>
-	<label>Введите второе число</label><br>
-	<input type = "text" id = "x"><br>
-	<input type="button" onclick ="result()" value="Отправить">
-</form>
-</body>
+    </script>
+    </head>
+    <body>
+        <form id="frm">
+            <input type = "text" placeholder="Введите числа" id = "p">
+            <input type="button" onclick ="result()" value="Отправить">
+        </form>
+    </body>
 </html>
