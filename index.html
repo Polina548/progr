@@ -1,27 +1,37 @@
 <html>
 <head>
-<script>
-function result(){
-	var sum = 0;
-	var N = Number(document.forms["frm"].elements["N"].value);
-	var x = Number(document.forms["frm"].elements["x"].value);
-	if(x>1){
-		for(var n = 0; n <= N; n++){
-			sum = sum + ((-1)**(n+1)/(2*n+1)*x**(2*n+1));
-		}
-		document.write(sum);
-	} else{
-		document.write("Неверное значение: ")
-	} }
+    <script>
+     class arifm{
+     a=0;
+     b=0;
+     constructor(a,b){
+        this.a = a;
+        this.b = b;
+     }
+     sum(){
+        return this.a + this.b;
+     }
+     razn(){
+        return this.a - this.b;
+     }
+     proizv(){
+        return this.a * this.b;
+     }
+     chastn(){
+        if (this.b !== 0) {
+            return this.a / this.b;
+        } else {
+            return "Деление на ноль невозможно";
+        }
+    }
+}
+ var arr = [new arifm(9,3), new arifm(5,2), new arifm(0,0),  new arifm(0,1)];
+   for (elem of arr){
+      document.writeln(arr.indexOf(elem) + " объект<br>");
+      document.writeln("Сумма: " + elem.sum() + "<br>");
+      document.writeln("Разность: " + elem.razn() + "<br>");
+      document.writeln("Произведение: " + elem.proizv() + "<br>");
+      document.writeln("Частное: " + elem.chastn() + "<br> <br>");
+   }
 </script>
-</head>
-<body>
-	<form id="frm">
-	<label>Введите первое число</label><br>
-	<input type = "text" id = "N"><br>
-	<label>Введите второе число</label><br>
-	<input type = "text" id = "x"><br>
-	<input type="button" onclick ="result()" value="Отправить">
-</form>
-</body>
 </html>
