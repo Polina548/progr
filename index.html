@@ -1,27 +1,20 @@
 <html>
 <head>
-<script>
-function result(){
-	var sum = 0;
-	var N = Number(document.forms["frm"].elements["N"].value);
-	var x = Number(document.forms["frm"].elements["x"].value);
-	if(x>1){
-		for(var n = 0; n <= N; n++){
-			sum = sum + ((-1)**(n+1)/(2*n+1)*x**(2*n+1));
-		}
-		document.write(sum);
-	} else{
-		document.write("Неверное значение: ")
-	} }
-</script>
-</head>
-<body>
-	<form id="frm">
-	<label>Введите первое число</label><br>
-	<input type = "text" id = "N"><br>
-	<label>Введите второе число</label><br>
-	<input type = "text" id = "x"><br>
-	<input type="button" onclick ="result()" value="Отправить">
-</form>
-</body>
+    <script>
+        function ip(){
+        var srt = document.forms["frm"].elements["N"].value;
+        var regexpv4 = /\b(((\d)|(\d\d)|(1\d\d)|(2[0-4]\d)|(25[0-5]))\.){3}((\d)|(\d\d)|(1\d\d)|(2[0-4]\d)|(25[0-5]))\b/g;
+        var regexpv6 = /\b((\d|[A-F]){4}:){7}((\d|[A-F]){4})\b/g;
+        var V4 = srt.match(regexpv4);
+        var V6 = srt.match(regexpv6);
+         document.write(V4 != null ? "v4: " + V4 : V6 != null ? "v6: " + V6 : "IP не подходит")
+        }
+    </script>
+    </head>
+    <body>
+        <form id="frm">
+            <input type = "text" id = "N">
+            <input type="button" onclick ="ip()" value="Отправить">
+        </form>
+    </body>
 </html>
