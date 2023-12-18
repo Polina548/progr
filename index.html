@@ -1,27 +1,83 @@
 <html>
 <head>
-<script>
-function result(){
-	var sum = 0;
-	var N = Number(document.forms["frm"].elements["N"].value);
-	var x = Number(document.forms["frm"].elements["x"].value);
-	if(x>1){
-		for(var n = 0; n <= N; n++){
-			sum = sum + ((-1)**(n+1)/(2*n+1)*x**(2*n+1));
-		}
-		document.write(sum);
-	} else{
-		document.write("Неверное значение: ")
-	} }
-</script>
+    <script>        
+     class Animal{
+        food;
+        location;
+        name;
+        constructor(food, location, name){
+            this.food = food;
+            this.location = location;
+            this.name =name;
+        }
+        makeNoise(){
+            document.writeln(`${animalName} говорит`);
+        }
+        eat(){
+            document.writeln(`${animalName} ест`);
+        }
+        sleep(){
+            document.writeln(`${animalName} спит`);
+        }    
+    }
+    var Animals = [];
+    class Dog extends Animal{
+        breed;
+         constructor(food, location, name, breed){
+            super(food, location, name)
+            this.breed =breed;
+         }
+        }
+         class Cat extends Animal{
+        age;
+         constructor(food, location, name, age){
+            super(food, location, name)
+            this.breed = age;
+         }
+        }
+         class Horse extends Animal{
+        weigth;
+         constructor(food, location, name, weigth){
+            super(food, location, name)
+            this.breed = weigth;
+         }
+        }
+        class Veterinarian {
+            static treatAnimal(){ //обрабатывает данные из формы и выводит информацию о животном
+                var animalName = document.forms['see'].elements['name'].value;
+                var animal = Animals.find(element => element.name == animalName);
+                document.writeln(`${animal.name} ест ${animal.food}, находится в ${animal.location}`);
+        }
+    } 
+        function pets(){
+            var s = document.forms["info"];
+            switch( s.elements['list'].value){
+                case "dog": 
+                    Animals.push(new Dog(s.elements['food'].value, s.elements['location'].value, s.elements['name'].value, s.elements['iditional'].value));
+                case "cat":
+                    Animals.push(new Cat(s.elements['food'].value, s.elements['location'].value, s.elements['name'].value, s.elements['iditional'].value));
+                case "horse":
+                     Animals.push(new Horse(s.elements['food'].value, s.elements['location'].value, s.elements['name'].value, s.elements['iditional'].value));
+            }
+        }
+    </script>
 </head>
 <body>
-	<form id="frm">
-	<label>Введите первое число</label><br>
-	<input type = "text" id = "N"><br>
-	<label>Введите второе число</label><br>
-	<input type = "text" id = "x"><br>
-	<input type="button" onclick ="result()" value="Отправить">
-</form>
+    <form id = "info">
+        <select id = "list">
+            <option value="dog"> Dog </option>
+            <option value="cat"> Cat </option>
+            <option value="horse"> Horse </option>
+        </select>
+        <input id="name" placeholder="Введите имя животного">
+        <input id="food" placeholder="Введите еду, которую употребляет животное">
+        <input id="location" placeholder="Введите место, где живёт живоное"> 
+        <input id="iditional" placeholder="Введите доп. информацию"> 
+        <input type = "button" onclick="pets()" value="Отправить">
+    </form>
+    <form id = "see">
+        <input id="name" placeholder="Введите имя животного">
+        <input type = "button" onclick="Veterinarian.treatAnimal()" value="Отправить">
+    </form>
 </body>
 </html>
