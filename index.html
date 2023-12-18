@@ -1,27 +1,39 @@
 <html>
-<head>
-<script>
-function result(){
-	var sum = 0;
-	var N = Number(document.forms["frm"].elements["N"].value);
-	var x = Number(document.forms["frm"].elements["x"].value);
-	if(x>1){
-		for(var n = 0; n <= N; n++){
-			sum = sum + ((-1)**(n+1)/(2*n+1)*x**(2*n+1));
-		}
-		document.write(sum);
-	} else{
-		document.write("Неверное значение: ")
-	} }
-</script>
+<head> 
+    <script>        
+        function backgroundAll(){
+            var colorb = document.getElementById("bgcolor").value;//устанавливает значение цвета фона из формы по id
+            var root = document.documentElement;// Получает корневой элемент
+            root.style.backgroundColor = colorb;//Устанавливает цвет фона для элемена root
+        }
+        function colortext(){//функция для изменения цвета текста
+            var colort = document.getElementById("tcolor").value;//устанавливает значение цвета текста из формы по id
+            var root = document.body;//Получает элемент body документа
+            root.style.color = colort;//устанавливает значение цвета текста для элемента body
+        }
+        function links(){
+            var changel = document.querySelector('a.link'); // Получает ссылку по селектору "a.link"
+            var link = document.getElementById('lchange').value;// Получает значение ссылки из поля id
+            changel.setAttribute('href', link);//Устанавливает введенную ссылку в качестве href для элемента с классом "link"
+        }
+    </script>
+    <style>
+        .class{
+            background-color: white;
+       }
+    </style>
+    <body>
+            <input type="text" placeholder="Введите цвет фона" id="bgcolor">
+            <input type="button" onclick="backgroundAll()" value="Ок">
+            <br><br>
+            <input type="text" placeholder="Введите цвет текста" id="tcolor">
+            <input type="button" onclick="colortext()" value="Ок">
+            <br><br>
+            <input type="text" placeholder="Введите ссылку" id="lchange">
+            <input type="button" onclick="links()" value="Ок">
+            <br><br>
+        <a href="https://get.wallhere.com/photo/landscape-ocean-shore-water-environment-1488703.jpg" class="link">Ссылка</a>
+        <p  class="p">Какой-то текст</p>    
+    </body>
 </head>
-<body>
-	<form id="frm">
-	<label>Введите первое число</label><br>
-	<input type = "text" id = "N"><br>
-	<label>Введите второе число</label><br>
-	<input type = "text" id = "x"><br>
-	<input type="button" onclick ="result()" value="Отправить">
-</form>
-</body>
 </html>
